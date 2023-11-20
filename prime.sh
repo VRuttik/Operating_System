@@ -1,23 +1,28 @@
 # Number is prime or not.
 
-echo Enter the number
+echo "Enter a number:"
 read n
-m=`expr $n / 2`
-echo $m
+
+m=$((n / 2))
 i=2
-flag=0
+isPrime=0
+
+# Checking remainder
 while [ $i -le $m ]
 do
-	rem=`expr $n % $i`
-	if [ $rem -eq 0 ]
-	then
-		flag=1
-	fi
-	i=`expr $i + 1`
+    rem=$((n % i))
+    if [ $rem -eq 0 ]
+    then
+        isPrime=1
+        break
+    fi
+    i=$((i + 1))
 done
-if [ $flag -eq 1 -o $n -eq 1 ]
+
+# Checking flag
+if [ $isPrime -eq 1 -o $n -eq 1 ]
 then
-	echo $n is not a prime number
+    echo "$n is not a prime number"
 else
-	echo $n is a prime number
+    echo "$n is a prime number"
 fi
